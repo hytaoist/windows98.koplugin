@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Lua and ZIP tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.4 zip unzip
+          sudo ln -sf /usr/bin/lua5.4 /usr/local/bin/lua
+      - name: Verify tag matches plugin metadata
+        run: |
+          version="$(lua -e 'io.write(assert(dofile("plugin/_meta.lua")).version)')"
+          test "$GITHUB_REF_NAME" = "v$version"
+      - name: Test and build
+        run: |
+          lua tests/patch_smoke_test.lua plugin/theme/apply.lua
+          lua tests/main_test.lua plugin/main.lua
+          lua tests/ota_test.lua plugin/ota.lua
+          ./tests/run_loader_test.sh
+          ./tests/run_deploy_test.sh
+          ./tests/run_installer_test.sh
+          ./tests/run_build_repro_test.sh
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" \
+              "dist/windows98-${GITHUB_REF_NAME}.koplugin.zip" \
+              "dist/windows98-${GITHUB_REF_NAME}.zip" \
+              "dist/SHA256SUMS" \
+              --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" \
+              "dist/windows98-${GITHUB_REF_NAME}.koplugin.zip" \
+              "dist/windows98-${GITHUB_REF_NAME}.zip" \
+              "dist/SHA256SUMS" \
+              --title "Windows 98 for KOReader $GITHUB_REF_NAME" \
+              --generate-notes
+          fi

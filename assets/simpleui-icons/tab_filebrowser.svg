@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <title>tab_filebrowser</title>
+  <g stroke="#000000" stroke-linecap="square" stroke-linejoin="miter">
+    <rect x="4" y="8" width="25" height="19" fill="#000000" stroke="none"/><rect x="2" y="10" width="25" height="18" fill="#000000" stroke="none"/><path d="M2 8h10l3 3h14v18H2z" fill="#b07818" stroke="#000000" stroke-width="1"/><path d="M2 13h28v16H2z" fill="#f0c848" stroke="#000000" stroke-width="1"/><line x1="3" y1="14" x2="28" y2="14" stroke="#ffe890" stroke-width="1"/><line x1="3" y1="28" x2="28" y2="28" stroke="#b07818" stroke-width="1"/><rect x="4" y="9" width="8" height="2" fill="#ffe890" stroke="none"/><rect x="5" y="16" width="22" height="3" fill="#ffe890" stroke="none"/>
+  </g>
+</svg>

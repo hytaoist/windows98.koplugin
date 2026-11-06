@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" shape-rendering="crispEdges">
+  <title>appbar pokeball</title>
+  <g stroke="#000000" stroke-linecap="square" stroke-linejoin="miter">
+    <polygon points="3,9 15,4 15,15 3,19" fill="#d40000" stroke="#000000" stroke-width="1"/><polygon points="17,4 29,9 29,19 17,15" fill="#00a000" stroke="#000000" stroke-width="1"/><polygon points="3,21 15,17 15,28 3,23" fill="#0000c0" stroke="#000000" stroke-width="1"/><polygon points="17,17 29,21 29,30 17,28" fill="#ffc000" stroke="#000000" stroke-width="1"/><line x1="15" y1="4" x2="15" y2="28" stroke="#ffffff" stroke-width="1"/><line x1="17" y1="4" x2="17" y2="28" stroke="#000000" stroke-width="1"/><path d="M4 10l9-4v5L4 15z" fill="#ffffff" stroke="none"/><path d="M18 6l9 4v5l-9-4z" fill="#ffffff" stroke="none"/>
+  </g>
+</svg>
